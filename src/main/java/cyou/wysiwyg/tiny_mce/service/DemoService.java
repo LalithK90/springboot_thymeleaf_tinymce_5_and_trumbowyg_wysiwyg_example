@@ -1,9 +1,10 @@
-package cyou.wysiwyg.demo.service;
+package cyou.wysiwyg.tiny_mce.service;
 
-import cyou.wysiwyg.demo.entity.Demo;
-import cyou.wysiwyg.demo.repository.DemoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import cyou.wysiwyg.tiny_mce.entity.Demo;
+import cyou.wysiwyg.tiny_mce.repository.DemoRepository;
 
 import java.util.List;
 

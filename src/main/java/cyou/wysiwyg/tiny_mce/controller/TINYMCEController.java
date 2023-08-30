@@ -1,35 +1,35 @@
-package cyou.wysiwyg.demo.controller;
+package cyou.wysiwyg.tiny_mce.controller;
 
-import cyou.wysiwyg.demo.entity.Demo;
-import cyou.wysiwyg.demo.service.DemoService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import cyou.wysiwyg.tiny_mce.entity.Demo;
+import cyou.wysiwyg.tiny_mce.service.DemoService;
+import lombok.AllArgsConstructor;
+
 @Controller
 @AllArgsConstructor
 public class TINYMCEController {
     private final DemoService demoService;
 
-
     @GetMapping("/tinymce")
     public String tinymce() {
-        return "tinymce";
+        return "tiny_mce/tinymce";
     }
 
     @PostMapping("/rich_text_editor")
-    public String save(@ModelAttribute Demo demo) {
+    public String save(@ModelAttribute final Demo demo) {
         System.out.println(demo.getDescription());
-        demoService.save(demo);
-        return "tinymce";
+        this.demoService.save(demo);
+        return "tiny_mce/tinymce";
     }
 
     @GetMapping("/findAll")
-    public String findAll(Model model) {
-        model.addAttribute("demos", demoService.findAll());
-        return "view";
+    public String findAll(final Model model) {
+        model.addAttribute("demos", this.demoService.findAll());
+        return "tiny_mce/view";
     }
 }

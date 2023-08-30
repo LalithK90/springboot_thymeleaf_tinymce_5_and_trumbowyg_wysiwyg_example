@@ -1,7 +1,8 @@
-package cyou.wysiwyg.demo.repository;
+package cyou.wysiwyg.tiny_mce.repository;
 
-import cyou.wysiwyg.demo.entity.Demo;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import cyou.wysiwyg.tiny_mce.entity.Demo;
 
 public interface DemoRepository extends JpaRepository<Demo, Long> {
 }
