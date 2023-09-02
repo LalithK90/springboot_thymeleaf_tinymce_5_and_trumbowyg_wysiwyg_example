@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery library -->
+    <script defer src="/webjars/jquery/3.7.0/jquery.js"></script>
 
 
     <script src="/webjars/tinymce/5.10.7/tinymce.js"></script>
@@ -15,7 +16,7 @@
 <body>
 <!-- Home Page -->
 <section class="pages bg-light mt-5" id="home">
-    <form action="/rich_text_editor" id="first_form" method="POST">
+    <form action="/tinymce/rich_text_editor" id="first_form" method="POST">
         <label for="myTextarea">Sample
         </label>
         <textarea id="myTextarea" name="description"> </textarea>
