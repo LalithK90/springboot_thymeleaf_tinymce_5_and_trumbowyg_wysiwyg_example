@@ -20,4 +20,8 @@ public class DemoOneService {
     public List<DemoOne> findAll() {
         return demoOneRepository.findAll();
     }
+
+    public DemoOne findById(Long id) {
+        return demoOneRepository.getReferenceById(id);
+    }
 }

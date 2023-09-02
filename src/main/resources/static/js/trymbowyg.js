@@ -1,4 +1,8 @@
 
+document.getElementById("btn").addEventListener("click", function () {
+    alert("sdfsf")
+})
+
 // MathJax inline configuration
 MathJax.Hub.Config({
     tex2jax: {
@@ -11,7 +15,7 @@ MathJax.Hub.Config({
 
 $('textarea')
     .trumbowyg({
-        svgPath: './dist/ui/icons.svg',
+        svgPath: '/dist/ui/icons.svg',
         changeActiveDropdownIcon: true,
         removeformatPasted: true,
         autogrow: true,
@@ -37,7 +41,6 @@ $('textarea')
                 dropdown: ['unorderedList', 'orderedList'],
                 ico: 'orderedList'
             },
-
         },
         btns: [
             ['viewHTML'],
@@ -61,6 +64,7 @@ $('textarea')
             ['horizontalRule'],
             ['removeformat'],
             ['ruby'],
+            ['customButton'],
             ['fullscreen']
         ],
         plugins: {
@@ -72,4 +76,40 @@ $('textarea')
                 step: 16,
             }
         }
-    }); // Listen for `tbwfocus` event
+    });
+
+
+function generatePdf () {
+
+    const htmlContent = document.getElementById("description").value;
+
+    // Create a new window to display the HTML content
+    const newWindow = window.open('', '_blank');
+    newWindow.document.open();
+    newWindow.document.write(htmlContent);
+    newWindow.document.close();
+
+    // Wait for the content to load
+    newWindow.onload = function () {
+        // Use the browser's print functionality to save as PDF
+        newWindow.print();
+        newWindow.close();
+    };
+}
+
+document.getElementById("generate-pdf").addEventListener("click", () => generatePdf());
+
+// Define your custom Trumbowyg plugin
+$.trumbowyg.plugins.myCustomButton = {
+    init: function (trumbowyg) {
+        // Add a custom button to the toolbar
+        trumbowyg.addBtnDef('myCustomButton', {
+            text: 'Custom Button', // Button text
+            ico: 'justifyRight',   // Font Awesome icon for the button
+            fn: function () {
+                // Your custom function here
+                trumbowyg.execCmd('insertText', 'This is my custom text.');
+            }
+        });
+    }
+};
